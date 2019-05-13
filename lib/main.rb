@@ -49,11 +49,11 @@ class Game
             print_hidden_word
             puts "\nYou have #{@turns_left} turns left. Hint: the word is \"#{@computer.secret_word}\""
             # puts "\nYou have #{@turns_left} turns left. Hint: The word is a boys name.".center(120)
-            puts "\nPrevious guess:[ #{@player.previous_guess.join(" ").upcase} ]"
+            puts "\nPrevious guess:[ #{@player.previous_guesses.join(" ").upcase} ]"
             puts "\nYou can save at anypoint by typing \"$\""
             @player.make_a_guess
-            break if player_wants_to_save?(@player.guess)
-            populate_hidden_word(@player.guess)
+            break if player_wants_to_save?(@player.players_current_guess)
+            populate_hidden_word(@player.players_current_guess)
             @turns_left -= 1
         end
     end
@@ -87,10 +87,10 @@ class Game
         reply == 1 ? load_from_yaml : load_from_json         
     end
 
-    def populate_hidden_word(players_guess)
-        if @computer.correct_guess?(players_guess)
-            @computer.correct_guess?(players_guess).each do |index|
-                @hidden_word[index] = players_guess
+    def populate_hidden_word(players_current_guess)
+        if @computer.correct_guess?(players_current_guess)
+            @computer.correct_guess?(players_current_guess).each do |index|
+                @hidden_word[index] = players_current_guess
             end
         end
     end
@@ -108,22 +108,10 @@ class Game
             retry
         end
         $reply.to_i
-            # file_name = gets.chomp
-            # if file_name.match(/\.json/i)
-            #     file_name.gsub!(/\.json/i,"")     
-            # elsif file_name.match(/\.yaml/i)
-            #     file_name.gsub!(/\.yaml/i,"")
-            # end
-            # file_name
     end
 
     def clean_file_name_reply
         file_name = gets.chomp
-        # if file_name.match(/\.json/i)
-            # file_name.gsub!(/\.json/i,"")     
-        # elsif file_name.match(/\.yaml/i)
-        #     file_name.gsub!(/\.yaml/i,"")
-        # end
         file_name.gsub!(/\.yaml|\.json/,"")
         file_name
     end

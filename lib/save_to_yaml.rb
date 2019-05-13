@@ -14,7 +14,7 @@ module Save_to_yaml
         YAML.dump({
             :hidden_word => @hidden_word,
             :turns_left => @turns_left,
-            :players_previous_guess => @player.previous_guess,
+            :players_previous_guesses => @player.previous_guesses,
             :computers_secret_word => @computer.secret_word
         })
     end
@@ -23,7 +23,7 @@ module Save_to_yaml
         data = get_yaml_files
         @hidden_word = data[:hidden_word]
         @turns_left = data[:turns_left]
-        @player.previous_guess = data[:players_previous_guess]
+        @player.previous_guesses = data[:players_previous_guesses]
         @computer.secret_word = data[:computers_secret_word]
         play_game
     end
