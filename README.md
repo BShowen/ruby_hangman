@@ -14,7 +14,7 @@ $   git clone https://github.com/BShowen/ruby_terminal_hangman.git
 ```
 
 ### 2. cd into the lib folder and run 'main.rb'
-first cd into the folder where you downloaded the repo, and then cd into the "lib" directory where "main.rb" is located. 
+first cd into the folder where you downloaded the repo and then cd into the "lib" directory where "main.rb" is located. 
 ``` 
 $   cd folder_where_repo_is_located
 $   cd lib
