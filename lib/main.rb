@@ -47,8 +47,8 @@ class Game
         until game_over?  do
             clear_screen
             print_hidden_word
-            puts "\nYou have #{@turns_left} turns left. Hint: the word is \"#{@computer.secret_word}\""
-            # puts "\nYou have #{@turns_left} turns left. Hint: The word is a boys name.".center(120)
+            # puts "\nYou have #{@turns_left} turns left. Hint: the word is \"#{@computer.secret_word}\""
+            puts "\nYou have #{@turns_left} turns left. Hint: The word is a boys name.".center(120)
             puts "\nPrevious guess:[ #{@player.previous_guesses.join(" ").upcase} ]"
             puts "\nYou can save at anypoint by typing \"$\""
             @player.make_a_guess
